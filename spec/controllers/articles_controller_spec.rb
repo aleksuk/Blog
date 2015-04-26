@@ -75,6 +75,38 @@ RSpec.describe ArticlesController, type: :controller do
     end
   end
 
+  describe 'PATCH #update' do
+    it 'responds successfully with an HTTP 200 status code' do
+      article = Article.first
+      sign_in @user
+
+      patch :update, id: article.id, article: { content: article.content, title: article.title }
+
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+    end
+
+    it 'updates article data' do
+      article = Article.first
+      new_title = 'some new title'
+      sign_in @user
+
+      patch :update, id: article.id, article: { content: article.content, title: new_title }
+
+      update_article = Article.find(article.id)
+      expect(update_article.title).to eq(new_title)
+    end
+
+    it 'returns 422 status code' do
+      article = Article.first
+      sign_in @user
+
+      patch :update, id: article.id, article: { content: '', title: '' }
+
+      expect(response).to have_http_status(422)
+    end
+  end
+
   describe 'POST #create' do
     it 'renders article template' do
       sign_in @user
