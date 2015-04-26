@@ -1,5 +1,7 @@
 class AdminsController < ApplicationController
 
+  before_filter :check_permission
+
   def show
     @users = User.page(1).per(10)
     @articles = Article.page(1).per(10)

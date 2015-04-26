@@ -1,5 +1,8 @@
 class ArticlesController < ApplicationController
 
+  skip_before_filter :authenticate_user!, only: [:index, :show]
+  before_action :check_permission, except: [:index, :show]
+
   def index
     @articles = Article.order(:created_at).page(params[:page]).per(10)
     @pagination = @articles

@@ -8,13 +8,14 @@ class Blog.Articles extends Blog.Base
 
   initialize: ->
     super()
-    $('.summernote').summernote(height: 300)
+    @nodes.$summernote.summernote(height: 300, onkeyup: @updateContent.bind(@))
 
   addEvents: ->
     @nodes.$articleForm.on('submit', @addArticle.bind(@))
 
   findNodes: ->
     @nodes =
+      $summernote: @body.find('.summernote')
       $body: @body,
       $articleForm: @body.find('.article-form')
       $articleTitle: @body.find('.article-title')
@@ -22,8 +23,11 @@ class Blog.Articles extends Blog.Base
       $error: @body.find('.alert-danger')
       $errorContent: @body.find('.article-error-content')
 
+  updateContent: ->
+    @nodes.$articleContent.val(@nodes.$summernote.code())
+
   addArticle: (e) ->
-    $target = $(e.currentTarget)
+    $target = $(e.target)
     action = $target.find('[name=_method]').val() || 'post'
 
     @ajax[@actions[action]](
@@ -31,9 +35,11 @@ class Blog.Articles extends Blog.Base
       data:
         article:
           title: @nodes.$articleTitle.val()
-          content: @nodes.$articleContent.val()
+          content: @nodes.$summernote.code()
       success: @relocate
       error: ((response) ->
         @showError response.responseJSON.join('<br />')
       ).bind(@)
     )
+
+    return false

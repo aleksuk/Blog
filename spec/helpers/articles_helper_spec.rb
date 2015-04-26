@@ -1,15 +1,20 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the ArticlesHelper. For example:
-#
-# describe ArticlesHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe ArticlesHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  let(:article) { Article.new }
+
+  before do
+    @article = Article.create(title: 'Some title', content: 'Some content')
+  end
+
+  after do
+    Article.all.each { |article| article.destroy }
+  end
+
+  it '#get_article_button_text' do
+    expect(get_article_button_text(@article)).to eq(I18n.t('articles.updateArticle'))
+    expect(get_article_button_text(article)).to eq(I18n.t('articles.createArticle'))
+  end
+
 end

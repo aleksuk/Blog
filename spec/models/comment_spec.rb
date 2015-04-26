@@ -1,5 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  before do
+    @comment = Comment.new
+  end
+
+  it 'should creates instance of comment' do
+    expect(@comment).to be_kind_of(Comment)
+  end
+
 end

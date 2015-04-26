@@ -16,12 +16,8 @@ class User < ActiveRecord::Base
          :trackable,
          :validatable
 
-  def is_admin?
+  def admin?
     role.name == 'admin'
-  end
-
-  def is_registered?
-    role.name == 'registered'
   end
 
   private

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :articles do
-    resources :comments
+    resources :comments, only: [:create, :destroy]
   end
 
   resource :user, only: [:show]
@@ -13,8 +13,6 @@ Rails.application.routes.draw do
 
   get 'admin/users' => 'admins#change_users'
   get 'admin/articles' => 'admins#change_articles'
-
-  get 'users/validate_user' => 'users#validate'
 
   patch 'admin/edit_user' => 'admins#edit_user'
   # The priority is based upon order of creation: first created -> highest priority.

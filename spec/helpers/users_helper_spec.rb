@@ -1,15 +1,37 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the UsersHelper. For example:
-#
-# describe UsersHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe UsersHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  let(:current_user) do
+    Class.new do
+      attr_accessor :admin
+
+      def admin?
+        admin
+      end
+
+    end.new
+  end
+
+  it '#get_edit_form_additional_message' do
+    expect(get_edit_form_additional_message(false)).to be_falsey
+    expect(get_edit_form_additional_message(true)).to eq(I18n.t('authentication.help.info'))
+  end
+
+  it '#get_edit_form_button_text' do
+    expect(get_edit_form_button_text(false)).to eq(I18n.t('authentication.registration'))
+  end
+
+  it '#is_admin?' do
+    expect(is_admin?).to be_falsey
+
+    current_user.admin = true
+    expect(is_admin?).to be_truthy
+  end
+
+  it '#get_edit_form_title' do
+    expect(get_edit_form_title(false)).to eq(I18n.t('authentication.registration'))
+    expect(get_edit_form_title(true)).to eq(I18n.t('authentication.updateProfile'))
+  end
+
 end

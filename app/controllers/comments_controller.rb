@@ -1,5 +1,8 @@
 class CommentsController < ApplicationController
 
+  before_filter :check_permission, only: [:destroy]
+  skip_before_filter :authenticate_user!, only: [:create]
+
   def create
     @article = Article.find(params[:article_id])
     @comment = @article.comments.create(comment_params.merge(user_id: get_user_id))

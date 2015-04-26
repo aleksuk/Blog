@@ -9,7 +9,7 @@ module UsersHelper
   end
 
   def is_admin?
-    current_user && current_user.is_admin?
+    current_user && current_user.admin?
   end
 
   def get_edit_form_title is_edit
