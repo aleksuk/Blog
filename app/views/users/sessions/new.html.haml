@@ -1,0 +1,33 @@
+.row
+  .col-md-7
+    = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'login-form' }) do |f|
+      %fieldset
+        #legend
+          %legend= t('authentication.login')
+
+          .control-group
+            = f.label t('authentication.email'), class: 'control-label'
+            .controls
+              = f.email_field :email, class: ['form-control', 'input', 'email'], placeholder: t('authentication.emailPlaceholder')
+              %br
+
+          .control-group
+            = f.label t('authentication.password'), class: 'control-label'
+            .controls
+              = f.password_field :password, class: ['form-control', 'input', 'password'], placeholder: t('authentication.passwordPlaceholder')
+
+          - if devise_mapping.rememberable?
+            %p.help-block
+              %label
+                = f.check_box :remember_me, class: 'remember-me'
+                = t('authentication.rememberMe')
+
+          .control-group
+            .controls
+              = f.submit t('authentication.login'), class: ['btn', 'btn-success']
+              = link_to t('authentication.signUp'), new_user_registration_path, class: ['btn', 'btn-default']
+              = link_to t('authentication.forgotPassword'), new_user_password_path, class: ['btn', 'btn-default']
+
+    .alert.alert-danger.login-error
+      %strong= t('error')
+      .login-error-content

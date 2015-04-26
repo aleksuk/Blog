@@ -1,0 +1,105 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  error: "Error!"
+  success: "Success!"
+
+  authentication:
+    exit: "Exit"
+    login: "Login"
+    hello: "Hello"
+    registration: "Registration"
+    name: "Name"
+    email: "Email"
+    emailPlaceholder: "Input e-mail"
+    password: "Password"
+    passwordPlaceholder: "Input password"
+    passwordConfirmation: "Password confirmation"
+    rememberMe: "Remember Me"
+    signUp: "Sign Up"
+    forgotPassword: "Forgot your password?"
+    updateProfile: "Update profile"
+    currentPassword: "Current password"
+    cancel: "Cancel"
+    deleteAccount: "Delete my account"
+    sendResetPassword: "Send me reset password instruction"
+
+    help:
+      name: "Username can't be empty"
+      email: "Please provide your e-mail"
+      password: "Password should be at least 8 characters"
+      passwordConfirmation: "Please confirm password"
+      info: "Leave blank if you don't want to change it"
+      currentPassword: "We need your current password to confirm your changes"
+
+  roles:
+    registered: "Registered"
+    banned: "Banned"
+    moderator: "Moderator"
+    admin: "Admin"
+
+  layout:
+    edit: "Edit"
+
+    navigation:
+      main: "Main"
+      profile: "Profile"
+      home: "Home"
+
+  articles:
+    title: "Title"
+    content: "Content"
+    editArticle: "Edit Article"
+    newArticle: "New Article"
+    createArticle: "Create Article"
+    updateArticle: "Update Article"
+    removeArticle: "Remove Article"
+    titlePlaceHolder: "Input article title"
+    readArticle: "Read Article ..."
+
+    comments:
+      comments: "Comments"
+      addComment: "Add comment"
+      inputComment: "Comment..."
+
+  users:
+    unregisteredUser: "Unregistered user"
+    profile: "User profile"
+    name: "Name"
+    email: "Email"
+    editProfile: "Edit profile"
+
+  admins:
+    administration: "Administration"
+
+    users:
+      name: "Name"
+      email: "Email"
+      role: "Role"
+      id: "#id"
+      editUser: "Edit User"
+      users: "Users"
+
+    articles:
+      articles: "Articles"
+      title: "Title"
+      link: "Link"

@@ -1,0 +1,19 @@
+= form_for @article, remote: true, html: { class: 'article-form' } do |f|
+
+  %p
+    %h4= t('articles.title')
+    = f.text_field :title, class: ['form-control', 'article-title'], placeholder: t('articles.titlePlaceHolder')
+
+  %p
+    %h4= t('articles.content')
+    = f.text_area :content, class: ['summernote', 'article-content']
+
+  %p
+    = f.submit get_article_button_text(@article), class: ['btn', 'btn-success', 'pull-right']
+    - if edit
+      = link_to t('articles.removeArticle'), articles_path, class: ['btn', 'btn-danger'], method: :destroy
+
+
+.alert.alert-danger.article-error
+  %strong= t('error')
+  .article-error-content

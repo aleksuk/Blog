@@ -1,0 +1,17 @@
+.row
+  .col-md-7
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+      %fieldset
+        #legend
+          %legend= t('authentication.forgotPassword')
+          .control-groupl
+            = f.label t('authentication.email'), class: 'control-label'
+            .controls
+              = f.email_field :email, class: ['form-control', 'input'], placeholder: t('authentication.emailPlaceholder'), autofocus: true
+              %br
+
+          .control-group
+            .controls
+              = f.submit t('authentication.sendResetPassword'), class: ['btn', 'btn-success']
+              = link_to t('authentication.signUp'), new_user_registration_path, class: ['btn', 'btn-default']
+              = link_to t('authentication.login'), new_user_session_path, class: ['btn', 'btn-default']

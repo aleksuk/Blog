@@ -1,0 +1,11 @@
+- if is_admin?
+  %li
+    %p.navbar-text
+      =link_to t('admins.administration'), admin_path
+
+%li
+  %p.navbar-text
+    = "#{t('authentication.hello')}, #{link_to current_user.name, user_path}!".html_safe
+
+%li
+  = link_to t('authentication.exit'), destroy_user_session_path, method: :delete

@@ -1,0 +1,11 @@
+%header.navbar-inverse{:role => 'navigation'}
+  .container-fluid
+    .navbar-header
+      = link_to 'Webinfo', root_path, class: 'navbar-brand'
+
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right.user-info
+        - if current_user
+          = render 'layouts/logout'
+        - else
+          = render 'layouts/login'

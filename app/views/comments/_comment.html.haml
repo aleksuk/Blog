@@ -1,0 +1,10 @@
+.comment
+  .panel.panel-default
+    .panel-heading
+      %strong= get_user_name(comment.user)
+      %span.text-muted= time_ago_in_words(comment.created_at)
+      - if is_admin?
+        = link_to '&times;'.html_safe, [comment.article, comment], method: :delete, class: ['delete-comment', 'close']
+
+    .panel-body
+      = comment.body

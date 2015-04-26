@@ -1,0 +1,10 @@
+%table.table.table-hover.users-list
+  %thead
+    %tr
+      %th= t('admins.users.id')
+      %th= t('admins.users.name')
+      %th= t('admins.users.email')
+      %th= t('admins.users.role')
+  %tbody
+    - @users.each do |user|
+      = render 'user', user: user

@@ -1,0 +1,25 @@
+// Place all the styles related to the admins controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.admin-error {
+  width: 50%;
+  top: 200px;
+  left: 50%;
+  margin-left: -25%;
+  position: fixed;
+  display: none;
+}
+
+.admin-success {
+  width: 50%;
+  top: 200px;
+  left: 50%;
+  margin-left: -25%;
+  position: fixed;
+  display: none;
+}
+
+.user {
+  cursor: pointer;
+}

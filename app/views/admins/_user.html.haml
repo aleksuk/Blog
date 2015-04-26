@@ -1,0 +1,10 @@
+- id = user.id
+- name = user.name
+- email = user.email
+- role = user.role
+
+%tr.user{ data: { id: id, name: name, email: email, role: role.id } }
+  %td.id= id
+  %td.name= name
+  %td.email= email
+  %td.role= role.name.capitalize

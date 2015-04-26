@@ -1,0 +1,9 @@
+- if is_admin?
+  = link_to t('articles.createArticle'), new_article_path
+
+.articles-index
+  - @articles.each do |article|
+    %div.preview-article
+      = render article
+      %br
+      = link_to t('articles.readArticle'), article_path(article), class: ['btn', 'btn-default', 'read-article']

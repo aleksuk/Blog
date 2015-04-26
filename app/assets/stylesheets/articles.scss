@@ -1,0 +1,25 @@
+// Place all the styles related to the articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.preview-article {
+  article {
+    max-height: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+  }
+}
+
+.bottom-navigation {
+  margin-top: 15px;
+}
+
+.article-error {
+  display: none;
+  margin-top: 10px;
+}
+

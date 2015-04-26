@@ -1,0 +1,105 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+ru:
+  error: "Ошибка!"
+  success: "Успех!"
+
+  authentication:
+    exit: "Выход"
+    login: "Вход"
+    hello: "Здравствуйте"
+    registration: "Регистрация"
+    name: "Имя"
+    email: "Email"
+    emailPlaceholder: "Введите e-mail"
+    password: "Пароль"
+    passwordPlaceholder: "Введите пароль"
+    passwordConfirmation: "Подтверждение пароля"
+    rememberMe: "Запомнить меня"
+    signUp: "Зарегистрироваться"
+    forgotPassword: "Забыли пароль?"
+    updateProfile: "Обновить профиль"
+    currentPassword: "Текущий пароль"
+    cancel: "Отменить"
+    deleteAccount: "Удалить аккаунт"
+    sendResetPassword: "Выслать инструкцию"
+
+    help:
+      name: "Имя пользователя не может быть пустым"
+      email: "Укажите адрес вашей электронной почты"
+      password: "Пароль не может быть менее 8 символов"
+      passwordConfirmation: "Подтвердите пароль"
+      info: "Оставьте поле пустым, если вы не хотите его изменять"
+      currentPassword: "Введите текущий пароль для подтверждения изменений"
+
+  roles:
+    registered: "Registered"
+    banned: "Banned"
+    moderator: "Moderator"
+    admin: "Admin"
+
+  layout:
+    edit: "Редактировать"
+
+    navigation:
+      main: "Главная"
+      profile: "Профиль"
+      home: "Домашнаяя страница"
+
+  articles:
+    title: "Заголовок статьи"
+    content: "Контент"
+    editArticle: "Редактировать статью"
+    newArticle: "Новая статья"
+    createArticle: "Создать статью"
+    updateArticle: "Обновить статью"
+    removeArticle: "Удалить статью"
+    titlePlaceHolder: "Введите заголовок статьи"
+    readArticle: "Читать полностью ..."
+
+    comments:
+      comments: "Комментарии"
+      addComment: "Добавить комментарий"
+      inputComment: "Комментарий..."
+
+  users:
+    unregisteredUser: "Незарегистрированный пользователь"
+    profile: "Профиль пользователя"
+    name: "Имя"
+    email: "Email"
+    editProfile: "Редактировать профиль"
+
+  admins:
+    administration: "Администрирование"
+
+    users:
+      name: "Имя"
+      email: "Email"
+      role: "Роль"
+      id: "#id"
+      editUser: "Редактировать пользователя"
+      users: "Пользователи"
+
+    articles:
+      articles: "Статьи"
+      title: "Заголовок"
+      link: "Ссылка"

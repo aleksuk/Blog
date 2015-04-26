@@ -1,0 +1,8 @@
+%table.table.table-hover.articles-list
+  %thead
+    %tr
+      %th= t('admins.users.id')
+      %th= t('admins.articles.title')
+  %tbody
+    - @articles.each do |article|
+      = render 'article', article: article

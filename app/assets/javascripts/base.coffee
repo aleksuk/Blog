@@ -1,0 +1,44 @@
+class Blog.Base
+
+  target: null
+
+  constructor: ->
+    @body = $(document.body)
+
+    if @body.find(@target).length
+      @initialize()
+
+  initialize: ->
+    @ajax = new Blog.Ajax()
+    @findNodes()
+    @addEvents()
+
+  findNodes: ->
+    @nodes =
+      $error: $()
+      $errorContent: $()
+      $success: $()
+      $successContent: $()
+
+  showError: (message) ->
+    clearInterval(@errorTimeout)
+    @nodes.$errorContent.html(message)
+    @nodes.$error.fadeIn()
+    @errorTimeout = setTimeout(@clearError.bind(@), 3000)
+
+  showSuccess: (message) ->
+    clearInterval(@successTimeout)
+    @nodes.$successContent.html(message)
+    @nodes.$success.fadeIn()
+    @successTimeout = setTimeout(@clearSuccess.bind(@), 3000)
+
+  clearError: ->
+    @nodes.$error.fadeOut()
+
+  clearSuccess: ->
+    @nodes.$success.fadeOut()
+
+  relocate: (url) ->
+    window.location.assign(url)
+
+  addEvents: ->

@@ -1,0 +1,23 @@
+= render 'article', article: @article
+
+%nav.bottom-navigation
+  = link_to t('layout.navigation.main'), articles_path
+  - if is_admin?
+    | #{link_to t('layout.edit'), edit_article_path(@article)}
+
+%h4= t('articles.comments.comments')
+
+= form_for([@article, @article.comments.build], html: { class: 'add-comment' }) do |f|
+  = f.text_area :body, class: ['comment-body', 'form-control'], placeholder: t('articles.comments.inputComment'), row: 3
+  %br
+  = f.submit t('articles.comments.addComment'), class: ['btn', 'btn-default']
+
+.comment-error.alert.alert-danger
+  %strong= t('error')
+  .comment-error-content
+    
+.comments= render @comments
+
+
+
+

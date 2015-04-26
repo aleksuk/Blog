@@ -1,0 +1,7 @@
+%li
+  = link_to t('authentication.login'), new_user_session_path
+  -#= form_for :user, url: new_user_session_path, html: { method: :post, role: 'login', class: ['navbar-form', 'navbar-left', 'navbar-login']} do |f|
+  -#  .form-group
+  -#    = f.email_field :email, class: 'form-control', placeholder: 'Email'
+  -#    = f.password_field :password, autocomplete: 'off', class: 'form-control', placeholder: 'Password'
+  -#    = f.submit 'Login', class: ['btn', 'btn-invert', 'navbar-btn']

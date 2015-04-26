@@ -1,0 +1,5 @@
+%h2.page-header= t('users.profile')
+
+%p= "#{t('users.name')}: #{current_user.name}"
+%p= "#{t('users.email')}: #{current_user.email}"
+= link_to t('users.editProfile'), edit_user_registration_path

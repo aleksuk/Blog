@@ -1,0 +1,14 @@
+%nav
+  %ul.nav
+    %li
+      = link_to t('layout.navigation.main'), root_path
+
+    - if current_user
+      %li
+        = link_to t('layout.navigation.profile'), user_path
+
+    - else
+      %li
+        = link_to t('authentication.login'), new_user_session_path
+      %li
+        = link_to t('authentication.registration'), new_user_registration_path

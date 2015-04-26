@@ -1,0 +1,51 @@
+%fieldset
+  #legend
+    %legend= get_edit_form_title(edit)
+
+  .control-group
+    = f.label t('authentication.name'), class: 'control-label'
+    .controls
+      = f.text_field :name, class: ['form-control', 'input', 'name']
+      %p.help-block= t('authentication.help.name')
+
+  .control-groupl
+    = f.label t('authentication.email'), class: 'control-label'
+    .controls
+      = f.email_field :email, class: ['form-control', 'input', 'email']
+      %p.help-block= t('authentication.help.email')
+
+  .control-group
+    = f.label t('authentication.password'), class: 'control-label'
+    .controls
+      = f.password_field :password, class: ['form-control', 'input', 'password']
+      - if @validatable
+        %p.help-block= t('authentication.help.password')
+      - elsif edit
+        %p.help-block= get_edit_form_additional_message(edit)
+
+  .control-group
+    = f.label t('authentication.passwordConfirmation'), class: 'control-label'
+    .controls
+      = f.password_field :password_confirmation, class: ['form-control', 'input', 'password-confirmation']
+      %p.help-block= t('authentication.help.passwordConfirmation')
+
+  - if edit
+    .control-group
+      = f.label t('authentication.currentPassword'), class: 'control-label'
+      .controls
+        = f.password_field :current_password, class: ['form-control', 'input', 'current-password']
+        %p.help-block= t('authentication.help.currentPassword')
+
+  .control-group
+    .controls
+      = f.submit get_edit_form_button_text(edit), class: ['btn', 'btn-success']
+
+      - if edit
+        = link_to t('authentication.cancel'), user_path, class: ['btn', 'btn-default']
+        = link_to t('authentication.deleteAccount'), registration_path(resource_name), data: { confirm: 'Are you sure?' }, method: :delete, class: ['btn', 'btn-danger']
+
+  - if resource.errors.size > 0
+    .alert.alert-danger.user-registration
+      %strong= t('error')
+      .admin-error-content
+        = show_error_messages(resource).html_safe
