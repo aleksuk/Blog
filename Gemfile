@@ -32,6 +32,10 @@ gem 'kaminari'
 gem 'summernote-rails'
 gem 'font-awesome-rails'
 
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+gem 'progress_bar'
+
 # gem 'bootstrap-wysihtml5-rails'
 # gem 'bootstrap-wysiwyg-rails'
 
@@ -54,5 +58,7 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem 'sunspot-rails-tester'
 end
 

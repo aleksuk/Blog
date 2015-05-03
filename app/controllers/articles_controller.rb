@@ -4,7 +4,11 @@ class ArticlesController < ApplicationController
   before_action :check_permission, except: [:index, :show]
 
   def index
-    @articles = Article.order(:created_at).page(params[:page]).per(10)
+    @articles = Article.order(:created_at)
+                       .reverse_order
+                       .page(params[:page])
+                       .per(10)
+
     @pagination = @articles
   end
 
@@ -33,7 +37,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = Article.new(article_params.merge(user_id: get_user_id))
 
     if @article.save
       render plain: article_path(@article)

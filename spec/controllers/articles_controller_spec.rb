@@ -32,7 +32,7 @@ RSpec.describe ArticlesController, type: :controller do
     it 'loads 10 posts' do
       get :index
 
-      articles = Article.order(:created_at).page(1).per(10)
+      articles = Article.order(:created_at).reverse_order.page(1).per(10)
       expect(assigns(:articles)).to match_array(articles)
     end
   end

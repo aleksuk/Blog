@@ -24,10 +24,6 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:body)
   end
 
-  def get_user_id
-    current_user.id if current_user
-  end
-
   def check_xhr
     if request.xhr?
       render @comment

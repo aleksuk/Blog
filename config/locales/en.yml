@@ -103,3 +103,8 @@ en:
       articles: "Articles"
       title: "Title"
       link: "Link"
+
+  search:
+    button: "Search"
+    placehodler: "search ..."
+    result: "Search results"

@@ -1,5 +1,5 @@
 - if is_admin?
-  = link_to t('articles.createArticle'), new_article_path
+  = link_to t('articles.createArticle'), new_article_path, class: ['btn', 'btn-success']
 
 .articles-index
   - @articles.each do |article|
@@ -7,3 +7,5 @@
       = render article
       %br
       = link_to t('articles.readArticle'), article_path(article), class: ['btn', 'btn-default', 'read-article']
+      - if is_admin?
+        = link_to t('articles.removeArticle'), article_path(article), method: :delete, class: ['btn', 'btn-danger', 'remove-article', 'pull-right']

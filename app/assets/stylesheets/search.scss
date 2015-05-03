@@ -1,0 +1,25 @@
+// Place all the styles related to the search controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.search-form {
+
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  .stylish-input-group {
+    .input-group-addon{
+      background: white !important;
+    }
+
+    .form-control{
+      border-right: 0;
+      box-shadow: 0 0 0;
+      border-color: #ccc;
+    }
+
+    button {
+      border: 0;
+      background: transparent;
+    }
+  }
+}

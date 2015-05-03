@@ -58,32 +58,4 @@ RSpec.describe AdminsController, type: :controller do
     end
   end
 
-  describe 'PATCH #edit_user' do
-    it 'updates user data' do
-      sign_in user
-      new_name = user.name + ' M'
-
-      xhr :patch, :edit_user, user: { id: user.id, email: user.email, name: new_name, role_id: user.role.id }
-
-      update_user = User.find(user.id)
-      expect(update_user.name).to eq(new_name)
-    end
-
-    it 'renders user template' do
-      sign_in user
-
-      xhr :patch, :edit_user, user: { id: user.id, email: user.email, name: user.name, role_id: user.role.id }
-
-      expect(response).to render_template(partial: '_user')
-    end
-
-    it 'returns 422 status code' do
-      sign_in user
-
-      xhr :patch, :edit_user, user: { id: user.id, email: '', name: '', role_id: user.role.id }
-
-      expect(response).to have_http_status(422)
-    end
-  end
-
 end

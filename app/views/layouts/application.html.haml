@@ -9,7 +9,7 @@
   %body
     = render 'layouts/header'
 
-    %div.container.application-content
+    %main.container.application-content
       .col-md-10.col-xs-15
         = yield
 
@@ -17,5 +17,5 @@
         = render 'layouts/navigation'
 
     - if @pagination
-      .container
+      %section.container
         = paginate @pagination

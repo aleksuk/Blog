@@ -57,7 +57,7 @@ class Blog.Administration extends Blog.Base
 
   updateUser: ->
     @ajax.update(
-      url: '/admin/edit_user'
+      url: '/admin/user'
       data:
         user:
           id: @nodes.$modal.find('.id').val()

@@ -1,0 +1,18 @@
+%h2= t('search.result')
+
+= form_tag search_index_path, method: :get, class: ['search-form']  do
+  #imaginary_container.container-fluid
+    .input-group.stylish-input-group
+      = text_field_tag :query, params[:query], class: 'form-control', placeholder: t('search.placehodler')
+      %span.input-group-addon
+        %button{type: 'submit'}
+          %span.glyphicon.glyphicon-search
+
+.articles-index
+  - @articles.each do |article|
+    %div.preview-article
+      = render article
+      %br
+      = link_to t('articles.readArticle'), article_path(article), class: ['btn', 'btn-default', 'read-article']
+      - if is_admin?
+        = link_to t('articles.removeArticle'), article_path(article), class: ['btn', 'btn-danger', 'remove-article', 'pull-right']

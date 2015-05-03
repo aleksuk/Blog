@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   end
 
   resource :user, only: [:show]
-  resource :admin, only: [:show]
-
+  resource :admin, only: [:show] do
+    resource :user, only: [:update, :index]
+  end
+  resources :search, only: [:index]
   root 'articles#index'
 
   get 'admin/users' => 'admins#change_users'

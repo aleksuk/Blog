@@ -2,6 +2,8 @@
   %ul.nav
     %li
       = link_to t('layout.navigation.main'), root_path
+    %li
+      = link_to t('search.button'), search_index_path
 
     - if current_user
       %li

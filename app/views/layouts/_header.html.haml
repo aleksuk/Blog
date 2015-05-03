@@ -5,6 +5,12 @@
 
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav.navbar-right.user-info
+        %li
+          = form_tag search_index_path, method: :get, class: ['navbar-form', 'navbar-left'], role: 'search' do
+            .form-group
+              = text_field_tag :query, params[:query], class: 'form-control', placeholder: t('search.placehodler')
+            = submit_tag t('search.button'), class: ['btn', 'btn-default']
+
         - if current_user
           = render 'layouts/logout'
         - else

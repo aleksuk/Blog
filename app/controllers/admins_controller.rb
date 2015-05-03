@@ -17,20 +17,4 @@ class AdminsController < ApplicationController
     render partial: 'articles'
   end
 
-  def edit_user
-    @user = User.find(user_params[:id])
-
-    if @user.update(user_params)
-      render partial: 'user', locals: { user: @user }
-    else
-      render json: @user.errors.full_messages, status: 422
-    end
-  end
-
-  private
-
-  def user_params
-    params.required(:user).permit(:id, :name, :email, :role_id)
-  end
-
 end

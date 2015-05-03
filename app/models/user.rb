@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+
   has_many :comments
+  has_many :articles
   belongs_to :role
 
   before_create :set_default_role
@@ -15,6 +17,10 @@ class User < ActiveRecord::Base
          :rememberable,
          :trackable,
          :validatable
+
+  searchable do
+    text :name, :email
+  end
 
   def admin?
     role.name == 'admin'

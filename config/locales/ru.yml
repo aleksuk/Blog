@@ -103,3 +103,8 @@ ru:
       articles: "Статьи"
       title: "Заголовок"
       link: "Ссылка"
+
+  search:
+    button: "Поиск"
+    placehodler: "поиск ..."
+    result: "Результаты поиска"

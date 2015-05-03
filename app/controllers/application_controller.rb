@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) << :name
   end
 
+  def get_user_id
+    current_user.id if current_user
+  end
+
   def check_permission
     unless current_user && current_user.admin?
       redirect_to root_path
