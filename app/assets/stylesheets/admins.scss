@@ -2,24 +2,38 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.admin-error {
+.admin-error,
+.admin-success,
+.admin-warning {
   width: 50%;
   top: 200px;
   left: 50%;
   margin-left: -25%;
   position: fixed;
   display: none;
-}
-
-.admin-success {
-  width: 50%;
-  top: 200px;
-  left: 50%;
-  margin-left: -25%;
-  position: fixed;
-  display: none;
+  z-index: 2;
 }
 
 .user {
+  cursor: pointer;
+}
+
+.admin-search {
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+  a {
+    cursor: pointer;
+  }
+}
+
+.admin-search-result {
+  display: none;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+}
+
+.close-search {
+  color: grey;
   cursor: pointer;
 }

@@ -10,6 +10,12 @@ class Blog.Administration extends Blog.Base
 
   articlesUrl: 'admin/articles'
 
+  searchType: 'article'
+
+  searchUrls:
+    user: '/search/user'
+    article: '/search/article'
+
   findNodes: ->
     @nodes =
       $body: @body
@@ -20,19 +26,31 @@ class Blog.Administration extends Blog.Base
       $errorContent: @body.find('.admin-error-content')
       $success: @body.find('.admin-success')
       $successContent: @body.find('.admin-success-content')
+      $warning: @body.find('.admin-warning')
+      $warningContent: @body.find('.admin-warning-content')
       $nextUsers: @body.find('.next-users')
       $prevUsers: @body.find('.prev-users')
       $articlesList: @body.find('.articles-list')
       $nextArticles: @body.find('.next-articles')
       $prevArticles: @body.find('.prev-articles')
+      $searchButton: @body.find('.admin-search .search-btn')
+      $searchTypeText: @body.find('.search-type .text')
+      $searchTypeDropdown: @body.find('.search-type-dropdown')
+      $searchResult: @body.find('.admin-search-result')
+      $searchResultContent: @body.find('.admin-search-result .content')
+      $closeSearch: @body.find('.close-search')
+      $searchInput: @body.find('.admin-search-input')
 
   addEvents: ->
-    @nodes.$usersList.on('click', '.user', @editUser.bind(@))
+    @nodes.$body.on('click', '.user', @editUser.bind(@))
     @nodes.$modal.on('click', '.btn-modal-save', @done.bind(@))
     @nodes.$nextUsers.on('click', @nextUsers.bind(@))
     @nodes.$prevUsers.on('click', @prevUsers.bind(@))
     @nodes.$nextArticles.on('click', @nextArticles.bind(@))
     @nodes.$prevArticles.on('click', @prevArticles.bind(@))
+    @nodes.$searchTypeDropdown.on('click', 'li', @changeSearchType.bind(@))
+    @nodes.$searchButton.on('click', @search.bind(@))
+    @nodes.$closeSearch.on('click', @closeSearch.bind(@))
 
   editUser: (e) ->
     @userData = $(e.currentTarget).data()
@@ -125,3 +143,32 @@ class Blog.Administration extends Blog.Base
   updateUserView: (response) ->
     @nodes.$usersList.find('[data-id=' + @userData.id + ']').replaceWith(response)
     @showSuccess('Данные пользователя обновлены!')
+
+  changeSearchType: (e) ->
+    target = $(e.currentTarget)
+    data = target.data()
+
+    @searchType = data.type
+    @nodes.$searchTypeText.html(data.text)
+
+  search: ->
+    url = @searchUrls[@searchType]
+
+    @ajax.get(
+      url: url
+      data:
+        query: @nodes.$searchInput.val()
+      success: @renderSearchResult.bind(@)
+      error: @searchError.bind(@)
+    )
+
+  renderSearchResult: (content) ->
+    @nodes.$searchResultContent.html(content);
+    @nodes.$searchInput.val('')
+    @nodes.$searchResult.fadeIn()
+
+  closeSearch: ->
+    @nodes.$searchResult.fadeOut()
+
+  searchError: (response) ->
+    @showWarning(response.responseText)

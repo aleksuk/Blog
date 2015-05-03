@@ -19,6 +19,8 @@ class Blog.Base
       $errorContent: $()
       $success: $()
       $successContent: $()
+      $warning: $()
+      $warningContent: $()
 
   showError: (message) ->
     clearInterval(@errorTimeout)
@@ -32,11 +34,20 @@ class Blog.Base
     @nodes.$success.fadeIn()
     @successTimeout = setTimeout(@clearSuccess.bind(@), 3000)
 
+  showWarning: (message) ->
+    clearInterval(@warningTimeout)
+    @nodes.$warningContent.html(message)
+    @nodes.$warning.fadeIn()
+    @warningTimeout = setTimeout(@clearWarning.bind(@), 3000)
+
   clearError: ->
     @nodes.$error.fadeOut()
 
   clearSuccess: ->
     @nodes.$success.fadeOut()
+
+  clearWarning: ->
+    @nodes.$warning.fadeOut()
 
   relocate: (url) ->
     window.location.assign(url)

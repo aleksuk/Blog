@@ -22,6 +22,7 @@
 en:
   error: "Error!"
   success: "Success!"
+  warning: "Warning!"
 
   authentication:
     exit: "Exit"
@@ -108,3 +109,4 @@ en:
     button: "Search"
     placehodler: "search ..."
     result: "Search results"
+    error: "Nothing found"

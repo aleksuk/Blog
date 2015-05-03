@@ -7,16 +7,20 @@ Rails.application.routes.draw do
   end
 
   resource :user, only: [:show]
+
   resource :admin, only: [:show] do
     resource :user, only: [:update, :index]
   end
-  resources :search, only: [:index]
-  root 'articles#index'
 
   get 'admin/users' => 'admins#change_users'
   get 'admin/articles' => 'admins#change_articles'
 
-  patch 'admin/edit_user' => 'admins#edit_user'
+  resources :search, only: [:index]
+  get 'search/user' => 'search#find_user'
+  get 'search/article' => 'search#find_article'
+
+  root 'articles#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

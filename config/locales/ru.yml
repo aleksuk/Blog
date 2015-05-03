@@ -22,6 +22,7 @@
 ru:
   error: "Ошибка!"
   success: "Успех!"
+  warning: "Внимание!"
 
   authentication:
     exit: "Выход"
@@ -108,3 +109,4 @@ ru:
     button: "Поиск"
     placehodler: "поиск ..."
     result: "Результаты поиска"
+    error: "Ничего не найдено"

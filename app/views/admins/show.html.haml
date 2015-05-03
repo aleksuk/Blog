@@ -1,5 +1,28 @@
 %h1#administration= t('admins.administration')
 
+.row.admin-search
+  .input-group
+    .input-group-btn
+      %button.btn.btn-default.search-btn{ :type => 'button'}
+        %span= t('search.button')
+
+      %button.btn.btn-default.dropdown-toggle.search-type{ 'data-toggle' => 'dropdown', :type => 'button' }
+        %span.text= t('admins.articles.articles')
+        %span.caret
+
+      %ul.dropdown-menu.search-type-dropdown
+        %li{ data: { type: 'article', text: t('admins.articles.articles') } }
+          %a= t('admins.articles.articles')
+        %li{ data: { type: 'user', text: t('admins.users.users') } }
+          %a= t('admins.users.users')
+    %input.admin-search-input.form-control{ placeholder: t('search.placehodler') }
+
+.admin-search-result
+  %h3
+    = t('search.result')
+    %span.pull-right.close-search &times;
+  .content
+
 %h3= t('admins.users.users')
 = render 'users'
 
@@ -34,6 +57,10 @@
   .admin-success.alert.alert-success
     %strong= t('success')
     .admin-success-content
+
+  .admin-warning.alert.alert-warning
+    %strong= t('warning')
+    .admin-warning-content
 
 %template#edit-user-template
   .modal-header
