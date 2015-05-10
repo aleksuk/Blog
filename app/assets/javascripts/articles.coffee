@@ -4,10 +4,8 @@ class Blog.Articles extends Blog.Base
     patch: 'update'
     post: 'create'
 
-  target: '.article-form'
-
   initialize: ->
-    super()
+#    super()
     @nodes.$summernote.summernote(height: 300, onkeyup: @updateContent.bind(@))
 
   addEvents: ->

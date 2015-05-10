@@ -1,17 +1,14 @@
 class Blog.Base
 
-  target: null
-
   constructor: ->
     @body = $(document.body)
-
-    if @body.find(@target).length
-      @initialize()
-
-  initialize: ->
     @ajax = new Blog.Ajax()
     @findNodes()
     @addEvents()
+
+    @initialize()
+
+  initialize: ->
 
   findNodes: ->
     @nodes =

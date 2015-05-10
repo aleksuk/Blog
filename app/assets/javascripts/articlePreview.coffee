@@ -1,7 +1,5 @@
 class Blog.ArticlePreview extends Blog.Base
 
-  target: '.articles-index'
-
   addEvents: ->
     @body.on('click', '.read-article', @toggleArticlePreview.bind(@))
 

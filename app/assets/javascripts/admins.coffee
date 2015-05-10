@@ -1,7 +1,5 @@
 class Blog.Administration extends Blog.Base
 
-  target: '#administration'
-
   usersPage: 1
 
   articlesPage: 1
@@ -81,7 +79,7 @@ class Blog.Administration extends Blog.Base
           id: @nodes.$modal.find('.id').val()
           name: @nodes.$modal.find('.name').val()
           email: @nodes.$modal.find('.email').val()
-          role: @nodes.$modal.find('.role').val()
+          role_id: @nodes.$modal.find('.role').val()
       success: @updateUserView.bind(@)
       error: ((response) ->
         error = if $.isArray(response.responseJSON)

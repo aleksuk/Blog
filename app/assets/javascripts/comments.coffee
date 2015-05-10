@@ -1,7 +1,5 @@
 class Blog.Comments extends Blog.Base
 
-  target: '.add-comment'
-
   findNodes: ->
     @nodes =
       $body: @body

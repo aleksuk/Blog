@@ -1,7 +1,5 @@
 class Blog.Authentication extends Blog.Base
 
-  target: '.login-form'
-
   findNodes: ->
     $loginForm =  @body.find('.login-form')
 
