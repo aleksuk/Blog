@@ -76,6 +76,8 @@ en:
     removeArticle: "Remove Article"
     titlePlaceHolder: "Input article title"
     readArticle: "Read Article ..."
+    tags: "Tags"
+    tagsPlaceholder: "Input tags (separated by commas)"
 
     comments:
       comments: "Comments"

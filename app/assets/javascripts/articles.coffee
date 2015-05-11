@@ -17,6 +17,7 @@ class Blog.Articles extends Blog.Base
       $body: @body,
       $articleForm: @body.find('.article-form')
       $articleTitle: @body.find('.article-title')
+      $articleTags: @body.find('.article-tags')
       $articleContent: @body.find('.article-content')
       $error: @body.find('.alert-danger')
       $errorContent: @body.find('.article-error-content')
@@ -34,6 +35,7 @@ class Blog.Articles extends Blog.Base
         article:
           title: @nodes.$articleTitle.val()
           content: @nodes.$summernote.code()
+          article_tags: @nodes.$articleTags.val()
       success: @relocate
       error: ((response) ->
         @showError response.responseJSON.join('<br />')

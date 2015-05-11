@@ -76,6 +76,9 @@ ru:
     removeArticle: "Удалить статью"
     titlePlaceHolder: "Введите заголовок статьи"
     readArticle: "Читать полностью ..."
+    tags: "Тэги"
+    tagsPlaceholder: "Введите теги (в качестве разделителя, используйте запятые)"
+
 
     comments:
       comments: "Комментарии"

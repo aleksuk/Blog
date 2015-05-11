@@ -5,6 +5,11 @@
     = f.text_field :title, class: ['form-control', 'article-title'], placeholder: t('articles.titlePlaceHolder')
 
   %p
+    %h4= t('articles.tags')
+    = f.text_field :article_tags, class: ['form-control', 'article-tags'], placeholder: t('articles.tagsPlaceholder')
+
+
+  %p
     %h4= t('articles.content')
     = f.text_area :content, class: ['summernote', 'article-content']
 
