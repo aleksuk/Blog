@@ -49,4 +49,7 @@ class Blog.Base
   relocate: (url) ->
     window.location.assign(url)
 
+  openMainPage: ->
+    @relocate('/')
+
   addEvents: ->

@@ -1,3 +1,6 @@
+- if is_admin?
+  = link_to t('layout.edit'), edit_article_path(@article)
+
 = render 'article', article: @article
 
 %nav.bottom-navigation

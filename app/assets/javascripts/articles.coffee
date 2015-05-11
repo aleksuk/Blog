@@ -5,7 +5,6 @@ class Blog.Articles extends Blog.Base
     post: 'create'
 
   initialize: ->
-#    super()
     @nodes.$summernote.summernote(height: 300, onkeyup: @updateContent.bind(@))
 
   addEvents: ->

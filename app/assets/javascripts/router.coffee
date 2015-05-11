@@ -13,3 +13,6 @@ Blog.routing =
 
   '.add-comment': ->
     comments = new Blog.Comments()
+
+  '.edit-user-form': ->
+    userForm = new Blog.Registration()

@@ -44,8 +44,12 @@
         = link_to t('authentication.cancel'), user_path, class: ['btn', 'btn-default']
         = link_to t('authentication.deleteAccount'), registration_path(resource_name), data: { confirm: 'Are you sure?' }, method: :delete, class: ['btn', 'btn-danger']
 
-  - if resource.errors.size > 0
-    .alert.alert-danger.user-registration
+    %div{ class: ['alert', 'alert-danger', 'user-registration-error', "#{'hide-block' unless resource.errors.size > 0}"] }
       %strong= t('error')
-      .admin-error-content
-        = show_error_messages(resource).html_safe
+      .user-registration-error-content
+        - if resource.errors.size > 0
+          = show_error_messages(resource).html_safe
+
+  .user-registration-success.alert.alert-success
+    %strong= t('success')
+    .user-registration-success-content

@@ -3,6 +3,8 @@
     %tr
       %th= t('admins.users.id')
       %th= t('admins.articles.title')
+      %th= t('articles.tags')
+      %th
   %tbody
     - @articles.each do |article|
       = render 'admins/article', article: article

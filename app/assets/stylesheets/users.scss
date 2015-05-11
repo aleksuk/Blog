@@ -5,3 +5,21 @@
 .user-registration {
   margin-top: 20px;
 }
+
+.user-registration-error {
+  margin-top: 20px;
+}
+
+.user-registration-success {
+  width: 50%;
+  top: 200px;
+  left: 50%;
+  margin-left: -25%;
+  position: fixed;
+  display: none;
+  z-index: 2;
+}
+
+.hide-block {
+  display: none;
+}

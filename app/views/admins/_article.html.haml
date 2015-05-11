@@ -3,4 +3,6 @@
 
 %tr.article{ data: { id: id, title: title } }
   %td.id= id
-  %td.title= link_to title, edit_article_path(article)
+  %td.title= link_to title, article_path(article)
+  %td.tags= article.article_tags
+  %td.edit= link_to t('articles.editArticle'), edit_article_path(article)
