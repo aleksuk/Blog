@@ -1,6 +1,7 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'mixins.scss';
 
 .user-registration {
   margin-top: 20px;
@@ -11,13 +12,7 @@
 }
 
 .user-registration-success {
-  width: 50%;
-  top: 200px;
-  left: 50%;
-  margin-left: -25%;
-  position: fixed;
-  display: none;
-  z-index: 2;
+  @include modal-message();
 }
 
 .hide-block {

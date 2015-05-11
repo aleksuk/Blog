@@ -1,13 +1,14 @@
 // Place all the styles related to the comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'mixins.scss';
+
 .add-comment {
   margin-top: 20px;
 }
 
 .comment-error {
-  display: none;
-  margin-top: 20px;
+  @include error-message();
 }
 
 .comments {

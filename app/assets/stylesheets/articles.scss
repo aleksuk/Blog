@@ -1,6 +1,7 @@
 // Place all the styles related to the articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'mixins.scss';
 
 .preview-article {
   article {
@@ -14,12 +15,15 @@
   }
 }
 
+.article {
+  margin-top: 20px;
+}
+
 .bottom-navigation {
   margin-top: 15px;
 }
 
 .article-error {
-  display: none;
-  margin-top: 10px;
+  @include error-message();
 }
 

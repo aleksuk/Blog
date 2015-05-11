@@ -13,18 +13,11 @@
  * file per style scope.
  *= require custom
  *= require font-awesome
-  *= require summernote
+ *= require summernote
+ *= require mixins
  *= require_tree .
  *= require_self
  */
-
-
-
-//header {
-//  form.navbar-login {
-//    margin: 0;
-//  }
-//}
 
 .application-content {
   margin-top: 100px;

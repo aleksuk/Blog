@@ -19,4 +19,9 @@ module UsersHelper
   def show_error_messages resource
     resource.errors.full_messages.map { |msg| msg }.join('<br />')
   end
+
+  def has_errors? resource
+    resource.errors.size > 0
+  end
+
 end

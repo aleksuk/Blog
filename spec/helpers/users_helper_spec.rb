@@ -34,4 +34,12 @@ RSpec.describe UsersHelper, type: :helper do
     expect(get_edit_form_title(true)).to eq(I18n.t('authentication.updateProfile'))
   end
 
+  it '#has_errors?' do
+    user = User.new
+    expect(has_errors?(user)).to be_falsey
+
+    user.errors.add(:name, 'name can\'t be empty')
+    expect(has_errors?(user)).to be_truthy
+  end
+
 end

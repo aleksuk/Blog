@@ -1,0 +1,14 @@
+@mixin modal-message() {
+  width: 50%;
+  top: 200px;
+  left: 50%;
+  margin-left: -25%;
+  position: fixed;
+  display: none;
+  z-index: 2;
+}
+
+@mixin error-message() {
+  margin-top: 20px;
+  display: none;
+}
