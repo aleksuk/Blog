@@ -5,7 +5,23 @@ class Blog.Articles extends Blog.Base
     post: 'create'
 
   initialize: ->
-    @nodes.$summernote.summernote(height: 300, onkeyup: @updateContent.bind(@))
+    @nodes.$summernote.summernote(
+      height: 300
+      onkeyup: @updateContent.bind(@)
+      toolbar: [
+        ['style', ['style']],
+        ['font', ['bold', 'italic', 'underline', 'clear']],
+        ['fontname', ['fontname']],
+        ['color', ['color']],
+        ['fontsize', ['fontsize']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['height', ['height']],
+        ['table', ['table']],
+        ['insert', ['link', 'picture', 'hr']],
+        ['view', ['fullscreen', 'codeview']],
+        ['help', ['help']]
+      ]
+    )
 
   addEvents: ->
     @nodes.$articleForm.on('submit', @addArticle.bind(@))
