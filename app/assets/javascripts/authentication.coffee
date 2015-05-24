@@ -17,6 +17,9 @@ class Blog.Authentication extends Blog.Base
     @nodes.$emailField.on('focus', @removeFieldsError.bind(@))
     @nodes.$passwordField.on('focus', @removeFieldsError.bind(@))
 
+  initialize: ->
+    @nodes.$error.addClass('modal-message')
+
   login: (e) ->
     @ajax.create(
       url: '/users/sign_in'

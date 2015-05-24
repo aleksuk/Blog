@@ -12,7 +12,6 @@ class Blog.Registration extends Blog.Base
 
   findNodes: ->
     $userForm = @body.find('.edit-user-form')
-
     @nodes =
       $name: $userForm.find('.name')
       $email:$userForm.find('.email')
@@ -47,6 +46,9 @@ class Blog.Registration extends Blog.Base
     ).bind(@))
 
   initialize: ->
+    @nodes.$error.addClass('modal-message')
+    @nodes.$success.addClass('modal-message')
+
     @getMethod()
 
   getMethod: ->

@@ -21,6 +21,8 @@ class Blog.Articles extends Blog.Base
         ['view', ['fullscreen', 'codeview']],
         ['help', ['help']]
       ]
+
+      @nodes.$error.addClass('modal-message')
     )
 
   addEvents: ->
@@ -34,7 +36,7 @@ class Blog.Articles extends Blog.Base
       $articleTitle: @body.find('.article-title')
       $articleTags: @body.find('.article-tags')
       $articleContent: @body.find('.article-content')
-      $error: @body.find('.alert-danger')
+      $error: @body.find('.article-error')
       $errorContent: @body.find('.article-error-content')
 
   updateContent: ->

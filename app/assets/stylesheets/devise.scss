@@ -1,3 +1,9 @@
+@import 'mixins';
+
 .registration-fields {
   width: 300px;
+}
+
+.login-error {
+  @include error-message();
 }

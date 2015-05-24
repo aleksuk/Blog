@@ -18,22 +18,3 @@
  *= require_tree .
  *= require_self
  */
-
-.application-content {
-  margin-top: 100px;
-}
-
-body {
-  > .container {
-    margin-bottom: 50px;
-
-    > nav {
-      text-align: center;
-    }
-  }
-}
-
-.login-error {
-  margin-top: 20px;
-  display: none;
-}
