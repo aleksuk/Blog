@@ -13,3 +13,4 @@
 /tmp
 /.idea
 /solr/development/*
+/solr/pids/*
