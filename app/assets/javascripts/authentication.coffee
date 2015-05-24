@@ -27,7 +27,7 @@ class Blog.Authentication extends Blog.Base
         user:
           email: @nodes.$emailField.val()
           password: @nodes.$passwordField.val()
-          rememberMe: @nodes.$rememberMe.val()
+          remember_me: @nodes.$rememberMe.val()
       success: (->
         @relocate('/')
       ).bind(@)
