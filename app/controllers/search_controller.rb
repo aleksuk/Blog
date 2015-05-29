@@ -6,9 +6,7 @@ class SearchController < ApplicationController
   def index
     target = params[:query]
 
-    unless target && target.size > 0
-      return @articles = []
-    end
+    return @articles = [] unless valid_query?(target)
 
     query = find_in Article
 
@@ -23,9 +21,13 @@ class SearchController < ApplicationController
   end
 
   def find_user
-    query = find_in User
+    if valid_query?(params[:query])
+      query = find_in User
+      @users = query.results
+    else
+      @users = []
+    end
 
-    @users = query.results
     create_response(@users, 'admins/_users')
   end
 
@@ -36,6 +38,10 @@ class SearchController < ApplicationController
       fulltext params[:query]
       paginate page: params[:page] || 1, per_page: 10
     end
+  end
+
+  def valid_query? query
+    query && query.size > 0
   end
 
   def create_response data, partial

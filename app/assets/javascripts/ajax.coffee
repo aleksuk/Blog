@@ -11,6 +11,7 @@ class Blog.Ajax
   destroy: (params) ->
     $.ajax(
       url: params.url
+      data: params.data
       method: 'DELETE'
       success: params.success
       error: params.error

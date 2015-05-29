@@ -6,6 +6,10 @@ RSpec.describe Article, type: :model do
     @article = Article.new(title: 'test', content: 'qwerty', article_tags: 'JavaScript, name')
   end
 
+  after do
+    Tag.destroy_all
+  end
+
   it 'should creates instance of article' do
     expect(@article).to be_kind_of(Article)
   end
@@ -16,9 +20,11 @@ RSpec.describe Article, type: :model do
 
   it 'should update article tags' do
     tags = 'Js, test'
+    result_arr = Tag.where(name: tags.split(/\s*,\s*/))
+
     @article.article_tags = tags
 
-    expect(@article.article_tags).to eq(tags)
+    expect(@article.tags).to match_array(result_arr)
   end
 
   it 'should parse tags list into array' do
