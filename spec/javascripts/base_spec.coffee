@@ -1,7 +1,6 @@
 #= spec_helper
 
 describe 'Blog.Base', ->
-
   beforeEach ->
     @base = new Blog.Base()
 

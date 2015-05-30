@@ -1,7 +1,6 @@
 #= spec_helper
 
 describe 'Blog.Ajax', ->
-
   beforeEach ->
     sinon.stub($, 'ajax');
 
@@ -27,25 +26,25 @@ describe 'Blog.Ajax', ->
     @params.method = 'POST'
     @ajax.create(@params)
 
-    assert($.ajax.calledWith(@params))
+    assert($.ajax.calledWithMatch(@params))
     done()
 
   it '#get send ajax request by method GET', (done) ->
     @ajax.get(@params)
 
-    assert($.ajax.calledWith(@params))
+    assert($.ajax.calledWithMatch(@params))
     done()
 
   it '#update send ajax request by method PATCH', (done) ->
     @params.method = 'PATCH'
     @ajax.update(@params)
 
-    assert($.ajax.calledWith(@params))
+    assert($.ajax.calledWithMatch(@params))
     done()
 
   it '#destroy send ajax request by method DELETE', (done) ->
     @params.method = 'DELETE'
     @ajax.destroy(@params)
 
-    assert($.ajax.calledWith(@params))
+    assert($.ajax.calledWithMatch(@params))
     done()
