@@ -140,6 +140,7 @@ class Blog.Administration extends Blog.Base
 
   updateUserView: (response) ->
     @nodes.$usersList.find('[data-id=' + @userData.id + ']').replaceWith(response)
+    @nodes.$searchResultContent.find('.user[data-id=' + @userData.id + ']').replaceWith(response)
     @showSuccess('Данные пользователя обновлены!')
 
   changeSearchType: (e) ->
