@@ -9,7 +9,7 @@ describe 'Blog.ArticlePreview', ->
     sinon.stub(@article.toggleArticlePreview, 'bind').returns(@article.toggleArticlePreview)
     @article.addEvents()
 
-    assert(@article.body.on.calledWith('click', '.read-article', @article.toggleArticlePreview))
+    assert(@article.body.on.calledWith('click', '.read-article', @article.toggleArticlePreview), 'events weren\'t added')
 
     @article.body.on.restore()
     done()
@@ -37,10 +37,7 @@ describe 'Blog.ArticlePreview', ->
 
       @article.toggleArticlePreview(@eventObj)
 
-      assert(@jqObj.hasClass.calledWith('preview-article'))
-      assert(@article.showFullArticle.calledWith(@eventTarget, @jqObj))
-      assert(@eventObj.preventDefault.called)
-
+      assert(@article.showFullArticle.calledWith(@eventTarget, @jqObj), 'article wasn\'t showed')
       done()
 
     it 'hides article', (done) ->
@@ -49,10 +46,7 @@ describe 'Blog.ArticlePreview', ->
 
       @article.toggleArticlePreview(@eventObj)
 
-      assert(@jqObj.hasClass.calledWith('preview-article'))
-      assert(@article.hideArticle.calledWith(@eventTarget, @jqObj))
-      assert(@eventObj.preventDefault.called)
-
+      assert(@article.hideArticle.calledWith(@eventTarget, @jqObj), 'article wasn\'t hidden')
       done()
 
   it '#showFullArticle opens article', (done) ->
@@ -64,7 +58,7 @@ describe 'Blog.ArticlePreview', ->
 
     @article.showFullArticle(link, articleContainer)
 
-    assert(articleContainer.removeClass.calledWith('preview-article'))
+    assert(articleContainer.removeClass.calledWith('preview-article'), 'article wasn\'t showed')
     done()
 
   it '#hideArticle hides article', (done) ->
@@ -76,5 +70,5 @@ describe 'Blog.ArticlePreview', ->
 
     @article.hideArticle(link, articleContainer)
 
-    assert(articleContainer.addClass.calledWith('preview-article'))
+    assert(articleContainer.addClass.calledWith('preview-article'), 'article wasn\'t hidden')
     done()

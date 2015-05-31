@@ -9,7 +9,7 @@ describe 'Blog.Articles', ->
 
     @articles.initialize()
 
-    assert(@articles.nodes.$summernote.summernote.called)
+    assert(@articles.nodes.$summernote.summernote.called, 'summernote wasn\'t initialized')
     done()
 
   it '#addEvents', (done) ->
@@ -18,17 +18,17 @@ describe 'Blog.Articles', ->
 
     @articles.addEvents()
 
-    assert(@articles.nodes.$articleForm.on.calledWith('submit', @articles.addArticle))
+    assert(@articles.nodes.$articleForm.on.calledWith('submit', @articles.addArticle), 'events weren\'t added')
     done()
 
   it '#findNodes finds nodes', (done) ->
     delete @articles.nodes
 
-    expect(@articles.nodes).to.be.undefined
+    assert.isUndefined(@articles.nodes, 'nodes have still available')
 
     @articles.findNodes()
 
-    expect(@articles.nodes).is.an('object')
+    assert.isObject(@articles.nodes, 'nodes weren\'t available')
     done()
 
   it '#updateContent updates text after clicking keys', (done) ->
@@ -38,7 +38,7 @@ describe 'Blog.Articles', ->
 
     @articles.updateContent()
 
-    assert(@articles.nodes.$articleContent.val.calledWith(text))
+    assert(@articles.nodes.$articleContent.val.calledWith(text), 'content wasn\'t updated')
 
     @articles.nodes.$articleContent.val.restore()
     @articles.nodes.$summernote.code.restore()
@@ -69,12 +69,12 @@ describe 'Blog.Articles', ->
     it 'creates new article', (done) ->
       @articles.addArticle(@event)
 
-      assert(@articles.ajax.create.called)
+      assert(@articles.ajax.create.called, 'article wasn\'t created')
       done()
 
     it 'updates article', (done) ->
       @method.val.returns('patch')
       @articles.addArticle(@event)
 
-      assert(@articles.ajax.update.called)
+      assert(@articles.ajax.update.called, 'article wasn\'t updated')
       done()

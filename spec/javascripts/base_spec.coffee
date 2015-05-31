@@ -11,23 +11,19 @@ describe 'Blog.Base', ->
 
     @base.constructor()
 
-    assert(@base.initialize.called)
-    assert(@base.findNodes.called)
-    assert(@base.addEvents.called)
+    assert(@base.initialize.called, '#initialize method was\'t called')
+    assert(@base.findNodes.called, '#findNodes method was\'t called')
+    assert(@base.addEvents.called, '#addEvents method was\'t called')
     done()
 
   it '#findNodes creates object with nodes', (done) ->
-    @base.findNodes()
-    keys = [
-      '$success',
-      '$error',
-      '$errorContent',
-      '$successContent',
-      '$warning',
-      '$warningContent'
-    ]
+    delete @base.nodes
 
-    expect(@base.nodes).to.include.keys(keys)
+    assert.isUndefined(@base.nodes, 'nodes have still available')
+
+    @base.findNodes()
+
+    assert.isObject(@base.nodes, 'nodes weren\'t available')
     done()
 
   it '#showError shows error message', (done) ->
@@ -41,8 +37,8 @@ describe 'Blog.Base', ->
 
     @base.showError(errorMessage)
 
-    assert(@base.nodes.$errorContent.html.calledWith(errorMessage))
-    assert(@base.nodes.$error.fadeIn.called)
+    assert(@base.nodes.$errorContent.html.calledWith(errorMessage), 'error message wasn\'t showed')
+    assert(@base.nodes.$error.fadeIn.called, '#fadeIn error message wasn\'t showed')
 
     setTimeout.restore()
     clearInterval.restore()
@@ -61,8 +57,8 @@ describe 'Blog.Base', ->
 
     @base.showSuccess(successMessage)
 
-    assert(@base.nodes.$successContent.html.calledWith(successMessage))
-    assert(@base.nodes.$success.fadeIn.called)
+    assert(@base.nodes.$successContent.html.calledWith(successMessage), 'success message wasn\'t showed')
+    assert(@base.nodes.$success.fadeIn.called, '#fadeIn success message wasn\'t showed')
 
     setTimeout.restore()
     clearInterval.restore()
@@ -81,8 +77,8 @@ describe 'Blog.Base', ->
 
     @base.showWarning(warningMessage)
 
-    assert(@base.nodes.$warningContent.html.calledWith(warningMessage))
-    assert(@base.nodes.$warning.fadeIn.called)
+    assert(@base.nodes.$warningContent.html.calledWith(warningMessage), 'warning message wasn\'t showed')
+    assert(@base.nodes.$warning.fadeIn.called, '#fadeIn warning message wasn\'t showed')
 
     setTimeout.restore()
     clearInterval.restore()
@@ -96,7 +92,7 @@ describe 'Blog.Base', ->
     sinon.stub(@base.nodes.$error, 'fadeOut')
     @base.clearError()
 
-    assert(@base.nodes.$error.fadeOut.called);
+    assert(@base.nodes.$error.fadeOut.called, 'error messages weren\'t hidden');
 
     @base.nodes.$error.fadeOut.restore()
     done()
@@ -107,7 +103,7 @@ describe 'Blog.Base', ->
     sinon.stub(@base.nodes.$success, 'fadeOut')
     @base.clearSuccess()
 
-    assert(@base.nodes.$success.fadeOut.called)
+    assert(@base.nodes.$success.fadeOut.called, 'success messages weren\'t hidden')
 
     @base.nodes.$success.fadeOut.restore()
     done()
@@ -118,7 +114,7 @@ describe 'Blog.Base', ->
     sinon.stub(@base.nodes.$warning, 'fadeOut')
     @base.clearWarning()
 
-    assert(@base.nodes.$warning.fadeOut.called)
+    assert(@base.nodes.$warning.fadeOut.called, 'warning messages weren\'t hidden')
 
     @base.nodes.$warning.fadeOut.restore()
     done()
@@ -129,7 +125,7 @@ describe 'Blog.Base', ->
 
     @base.relocate(path)
 
-    assert(window.location.assign.calledWith(path))
+    assert(window.location.assign.calledWith(path), 'location wasn\'t changed')
 
     window.location.assign.restore()
     done()
@@ -140,5 +136,5 @@ describe 'Blog.Base', ->
 
     @base.openMainPage()
 
-    assert(@base.relocate.calledWith(mainPagePath))
+    assert(@base.relocate.calledWith(mainPagePath), 'main page wasn\'t opened')
     done()
