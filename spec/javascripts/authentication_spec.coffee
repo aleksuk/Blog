@@ -60,6 +60,8 @@ describe 'Blog.Authentication', ->
     @auth.login(event)
 
     assert(@auth.ajax.create.called, 'response wasn\'t sent')
+
+    @auth.ajax.create.restore()
     done()
 
   context '#showError', ->

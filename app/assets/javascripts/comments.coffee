@@ -11,8 +11,11 @@ class Blog.Comments extends Blog.Base
       $submitButton: @body.find('.add-comment [type=submit]')
 
   addEvents: ->
-    @nodes.$commentForm.on 'submit', this.submitHandler.bind(@)
-    @nodes.$comments.on 'click', '.delete-comment', this.deleteComment.bind(@)
+    @nodes.$commentForm.on('submit', @submitHandler.bind(@))
+    @nodes.$comments.on('click', '.delete-comment', @deleteComment.bind(@))
+
+  initialize: ->
+    @nodes.$error.addClass('modal-message')
 
   submitHandler: (event) ->
     event.preventDefault()
@@ -42,11 +45,11 @@ class Blog.Comments extends Blog.Base
     @nodes.$commentBody.val('')
 
   validate: (params) ->
-    if params.length >= 2
+    if params && params.length >= 2
       @clearError()
       true
     else
-      @showError('comment length can\'t be less then 2')
+      @showError('Длина комментария не может быть менее 2 символов')
       false
 
   deleteComment: (event) ->
@@ -59,7 +62,7 @@ class Blog.Comments extends Blog.Base
           .parents('.comment')
           .remove()
       error: (->
-        @showError('Error! Can\t remove comment')
+        @showError('Ошибка! Невозможно удалить комментарий!')
       ).bind(@)
     )
 
