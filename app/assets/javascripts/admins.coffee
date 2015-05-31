@@ -49,6 +49,7 @@ class Blog.Administration extends Blog.Base
     @nodes.$searchTypeDropdown.on('click', 'li', @changeSearchType.bind(@))
     @nodes.$searchButton.on('click', @search.bind(@))
     @nodes.$closeSearch.on('click', @closeSearch.bind(@))
+    @nodes.$searchInput.on('keypress', @onEnterInput.bind(@))
 
   editUser: (e) ->
     @userData = $(e.currentTarget).data()
@@ -171,3 +172,6 @@ class Blog.Administration extends Blog.Base
 
   searchError: (response) ->
     @showWarning(response.responseText)
+
+  onEnterInput: (e) ->
+    @search() if (e.keyCode == 13)
