@@ -153,18 +153,3 @@ describe 'Blog.Base', ->
 
     assert(@base.showError.calledWith(result))
     done()
-
-  it '#parseError parses json error into string', (done) ->
-    response =
-      responseJSON:
-        errors:
-          error: ['message'],
-          error2: ['message2']
-
-    result = "error message <br />error2 message2 <br />"
-
-    sinon.stub(@base, 'showError')
-    @base.parseError(response)
-
-    assert(@base.showError.calledWith(result))
-    done()
