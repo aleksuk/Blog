@@ -43,6 +43,7 @@ ru:
     cancel: "Отменить"
     deleteAccount: "Удалить аккаунт"
     sendResetPassword: "Выслать инструкцию"
+    resetPassword: "Изменить пароль"
 
     help:
       name: "Имя пользователя не может быть пустым"

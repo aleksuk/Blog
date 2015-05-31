@@ -1,0 +1,31 @@
+.row
+  .col-md-7
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: 'reset-password-form', method: :put }) do |f|
+      %fieldset
+        #legend
+          %legend= t('authentication.forgotPassword')
+          = f.hidden_field :reset_password_token, class: 'token'
+          .control-groupl
+            = f.label t('authentication.password'), class: 'control-label'
+            .controls
+              = f.password_field :password, autocomplete: 'off', class: ['form-control', 'input', 'password'], placeholder: t('authentication.passwordPlaceholder'), autofocus: true
+              %br
+          .control-groupl
+            = f.label t('authentication.passwordConfirmation'), class: 'control-label'
+            .controls
+              = f.password_field :password_confirmation, autocomplete: 'off', class: ['form-control', 'input', 'password-confirmation'], placeholder: t('authentication.passwordPlaceholder'), autofocus: true
+              %br
+
+          .control-group
+            .controls
+              = f.submit t('authentication.resetPassword'), class: ['btn', 'btn-success']
+              = link_to t('authentication.signUp'), new_user_registration_path, class: ['btn', 'btn-default']
+              = link_to t('authentication.login'), new_user_session_path, class: ['btn', 'btn-default']
+
+    - has_errors = has_errors?(resource)
+
+    %div{ class: ['alert', 'alert-danger', 'reset-password-error', "#{'hide-block' unless has_errors}"] }
+      %strong= t('error')
+      .reset-password-error-content
+        - if has_errors
+          = show_error_messages(resource).html_safe

@@ -54,17 +54,6 @@ class Blog.Registration extends Blog.Base
   getMethod: ->
     @method = @nodes.$userForm.find('[name=_method]').val() || @nodes.$userForm.attr('method')
 
-  parseError: (response) ->
-    json = response.responseJSON
-    errorMessage = ''
-
-    $.each(json.errors, (key, value)->
-      $.each(value, (i, el) ->
-        errorMessage += "#{key} #{el} <br />"
-      )
-    )
-
-    @showError(errorMessage)
 
   successUpdate: ->
     @showSuccess('Профиль успешно обновлен')

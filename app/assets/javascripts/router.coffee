@@ -16,3 +16,6 @@ Blog.routing =
 
   '.edit-user-form': ->
     userForm = new Blog.Registration()
+
+  '.reset-password-form': ->
+    resetPassword = new Blog.ResetPassword()

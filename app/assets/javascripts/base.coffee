@@ -52,4 +52,16 @@ class Blog.Base
   openMainPage: ->
     @relocate('/')
 
+  parseError: (response) ->
+    json = response.responseJSON
+    errorMessage = ''
+
+    $.each(json.errors, (key, value)->
+      $.each(value, (i, el) ->
+        errorMessage += "#{key} #{el} <br />"
+      )
+    )
+
+    @showError(errorMessage)
+
   addEvents: ->

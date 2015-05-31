@@ -43,6 +43,7 @@ en:
     cancel: "Cancel"
     deleteAccount: "Delete my account"
     sendResetPassword: "Send me reset password instruction"
+    resetPassword: "Reset password"
 
     help:
       name: "Username can't be empty"
