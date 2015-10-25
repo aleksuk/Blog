@@ -4,13 +4,9 @@ class SearchController < ApplicationController
   before_action :check_permission, except: [:index]
 
   def index
-    target = params[:query]
+    return @articles = [] unless valid_query?(params[:query])
 
-    return @articles = [] unless valid_query?(target)
-
-    query = find_in Article
-
-    @articles = query.results
+    @articles = find_in Article
     @pagination = @articles
   end
 
@@ -22,8 +18,7 @@ class SearchController < ApplicationController
 
   def find_user
     if valid_query?(params[:query])
-      query = find_in User
-      @users = query.results
+      @users = find_in User
     else
       @users = []
     end
@@ -34,10 +29,9 @@ class SearchController < ApplicationController
   private
 
   def find_in object
-    object.search do
-      fulltext params[:query]
-      paginate page: params[:page] || 1, per_page: 10
-    end
+    object.search(params[:query])
+        .page(params[:page])
+        .per(10)
   end
 
   def valid_query? query

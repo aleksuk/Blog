@@ -9,14 +9,6 @@ RSpec.describe SearchController, type: :controller do
                 role_id: Role.find_by_name('admin').id)
   end
 
-  let(:sunspot_obj) do
-    Class.new { attr_accessor :results }.new
-  end
-
-  before do
-    sunspot_obj.results = nil
-  end
-
   before(:all) do
     articles = [
         { title: 'yeoman', content: 'some content', article_tags: 'yeoman' },
@@ -50,12 +42,12 @@ RSpec.describe SearchController, type: :controller do
 
     it 'finds articles by string' do
       query = 'yeoman'
-      sunspot_obj.results = Article.where(title: query)
-      allow(Article).to receive(:search).and_return(sunspot_obj)
+      search_result = Article.search(query)
+      # allow(Article).to receive(:search).and_return(search_result)
 
       get :index, query: query
 
-      expect(assigns(:articles)).to match_array(sunspot_obj.results)
+      expect(assigns(:articles)).to match_array(search_result)
     end
   end
 
@@ -76,13 +68,12 @@ RSpec.describe SearchController, type: :controller do
 
     it 'returns search results' do
       query = 'yeoman'
-      sunspot_obj.results = Article.where(title: 'yeoman')
-      allow(Article).to receive(:search).and_return(sunspot_obj)
+      search_result = Article.search('yeoman')
 
       sign_in user
       get :find_article, query: query
 
-      expect(assigns(:articles)).to match_array(sunspot_obj.results)
+      expect(assigns(:articles)).to match_array(search_result)
     end
   end
 
@@ -104,12 +95,11 @@ RSpec.describe SearchController, type: :controller do
     it 'returns search results', search:true do
       sign_in user
 
-      sunspot_obj.results = User.where(name: 'Test')
-      allow(User).to receive(:search).and_return(sunspot_obj)
+      search_results = User.search('Test')
 
       get :find_user, query: 'Test'
 
-      expect(assigns(:users)).to match_array(sunspot_obj.results)
+      expect(assigns(:users)).to match_array(search_results)
     end
   end
 
@@ -142,9 +132,9 @@ RSpec.describe SearchController, type: :controller do
     it 'returns object with search result', search: true do
       query = 'yeoman'
       controller.params[:query] = query
-      allow(Article).to receive(:search).and_return(sunspot_obj)
+      search_result = Article.search(query)
 
-      expect(controller.send(:find_in, Article)).to eq(sunspot_obj)
+      expect(controller.send(:find_in, Article)).to match_array(search_result)
     end
   end
 

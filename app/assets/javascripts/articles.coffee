@@ -21,9 +21,8 @@ class Blog.Articles extends Blog.Base
         ['view', ['fullscreen', 'codeview']],
         ['help', ['help']]
       ]
-
-      @nodes.$error.addClass('modal-message')
     )
+    @nodes.$error.addClass('modal-message')
 
   addEvents: ->
     @nodes.$articleForm.on('submit', @addArticle.bind(@))

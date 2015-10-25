@@ -12,7 +12,4 @@
 !/log/.keep
 /tmp
 /.idea
-/solr/development/*
-/solr/default/*
-/solr/test/*
-/solr/pids/*
+/index

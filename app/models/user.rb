@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
+  include PgSearch
+
   has_many :comments
   has_many :articles
   belongs_to :role
@@ -18,9 +20,11 @@ class User < ActiveRecord::Base
          :trackable,
          :validatable
 
-  searchable do
-    text :name, :email
-  end
+  pg_search_scope :search,
+                  against: [:name, :email],
+                  :using => {
+                      :tsearch => {:prefix => true}
+                  }
 
   def admin?
     role.name == 'admin'

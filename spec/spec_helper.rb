@@ -40,16 +40,6 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
-  config.before do
-    Sunspot.session = Sunspot::Rails::StubSessionProxy.new($original_sunspot_session)
-  end
-
-  config.before :each, :solr => true do
-    Sunspot::Rails::Tester.start_original_sunspot_session
-    Sunspot.session = $original_sunspot_session
-    Sunspot.remove_all!
-  end
-
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin

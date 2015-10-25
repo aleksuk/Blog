@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.4'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -32,9 +32,7 @@ gem 'kaminari'
 gem 'summernote-rails'
 gem 'font-awesome-rails'
 
-gem 'sunspot_rails'
-gem 'sunspot_solr'
-gem 'progress_bar'
+gem 'pg_search'
 
 # gem 'bootstrap-wysihtml5-rails'
 # gem 'bootstrap-wysiwyg-rails'
@@ -59,7 +57,7 @@ group :development, :test do
   gem 'spring'
 
   gem 'rspec-rails'
-  gem 'sunspot-rails-tester'
+  # gem 'sunspot-rails-tester'
   gem 'teaspoon'
   gem 'teaspoon-mocha'
   gem 'phantomjs'
