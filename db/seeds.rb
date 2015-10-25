@@ -9,3 +9,8 @@
 ['registered', 'banned', 'moderator', 'admin'].each do |role|
   Role.find_or_create_by(name: role)
 end
+
+if User.count > 0
+  p 'First user set as admin'
+  User.first.role = Role.find_by_name('admin')
+end
